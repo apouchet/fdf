@@ -43,4 +43,4 @@ log :
 
 fclean : clean
 	rm -f $(NAME)
-	rm -f $(LIB)libft.a
+	make fclean -C $(LIB)
