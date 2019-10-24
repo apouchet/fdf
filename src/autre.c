@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 18:40:42 by apouchet          #+#    #+#             */
-/*   Updated: 2017/03/13 18:40:45 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:44:36 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,27 @@
 
 void	ft_image(t_val *val, int x, int y, int color)
 {
+	int pos;
+
+	pos = 4 * FENETRE * y + 4 * x;
 	if (color == 0)
 		color = 1;
 	if (val->col == 1)
 	{
-		val->image[4 * FENETRE * y + 4 * x] = 255 * (1 - val->b) +
+		val->image[pos] = 255 * (1 - val->b) +
 		(-val->inv) * (((255) / val->zmax) * color) * val->b;
-		val->image[4 * FENETRE * y + 4 * x + 1] = 255 * (1 - val->g) +
+		val->image[pos + 1] = 255 * (1 - val->g) +
 		(-val->inv) * (((255) / val->zmax) * color) * val->g;
-		val->image[4 * FENETRE * y + 4 * x + 2] = 255 * (1 - val->r) +
+		val->image[pos + 2] = 255 * (1 - val->r) +
 		(-val->inv) * (((255) / val->zmax) * color) * val->r;
 	}
 	else
 	{
-		val->image[4 * FENETRE * y + 4 * x] = 255 * (1 - val->b) -
+		val->image[pos] = 255 * (1 - val->b) -
 		(-val->inv) * (((255) / val->zmax) * color) * val->b;
-		val->image[4 * FENETRE * y + 4 * x + 1] = 255 * (1 - val->g) -
+		val->image[pos + 1] = 255 * (1 - val->g) -
 		(-val->inv) * (((255) / val->zmax) * color) * val->g;
-		val->image[4 * FENETRE * y + 4 * x + 2] = 255 * (1 - val->r) -
+		val->image[pos + 2] = 255 * (1 - val->r) -
 		(-val->inv) * (((255) / val->zmax) * color) * val->r;
 	}
 }
@@ -74,21 +77,15 @@ int		ft_key_on(int keycode, t_val *val)
 	return (ft_key(val));
 }
 
-void	ft_init(t_val *val)
+void	ft_init_fdf(t_val *val)
 {
-	val->x = 0;
-	val->y = 0;
+	ft_bzero(val, sizeof(t_val));
 	val->mid = FENETRE / 2;
 	val->coef = 2;
-	val->rotp = 0;
-	val->roth = 0;
-	val->rotv = 0;
 	val->vol = 8;
 	val->zmax = 1;
-	val->zmin = 0;
 	val->r = 1;
 	val->g = 1;
-	val->b = 0;
 	val->col = 1;
 	val->inv = 1;
 }

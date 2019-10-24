@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 17:57:55 by apouchet          #+#    #+#             */
-/*   Updated: 2017/01/10 17:57:56 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/10/22 01:42:42 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_join(char const *s1, char const *s2)
 	if (!s2)
 		return (NULL);
 	k = ft_strlen(s1) + ft_strlen(s2);
-	if (!(a = (char*)malloc(sizeof(char) * (k + 1))))
+	if (!(a = (char*)ft_memalloc(sizeof(char) * (k + 1))))
 		return (NULL);
 	while (s1[i])
 	{

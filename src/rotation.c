@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 18:35:39 by apouchet          #+#    #+#             */
-/*   Updated: 2017/03/13 18:36:18 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:41:40 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,15 @@ void	ft_rot(t_val *val)
 	int				y;
 	struct s_angle	b;
 
-	x = 0;
 	y = 0;
 	b.anglez = (M_PI * val->rotp) / 180;
 	b.anglex = (M_PI * val->rotv) / 180;
 	b.angley = (M_PI * val->roth) / 180;
-	while (y < val->nb - 1)
+	while (y < val->nb)
 	{
-		while (val->tab[y][x][3] != -10000)
-		{
-			rotation(val, b, x, y);
-			x++;
-		}
 		x = 0;
+		while (val->tab[y][x][3] != -10000)
+			rotation(val, b, x++, y);
 		y++;
 	}
 }

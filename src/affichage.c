@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 17:46:43 by apouchet          #+#    #+#             */
-/*   Updated: 2017/03/09 17:46:51 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:44:30 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_ligne_mod(int x, int y, t_val *val)
 	val->zcolor = val->tab[y][x][3];
 	ft_diag(x, y, val);
 	val->zcolor = val->tab[y][x][3];
-	if (y + 1 < val->nb - 1 &&
+	if (y + 1 < val->nb &&
 		val->tab[y + 1][x][1] < val->mid && val->tab[y + 1][x][0] < val->mid &&
 		val->tab[y + 1][x][1] > -val->mid && val->tab[y + 1][x][0] > -val->mid)
 	{
@@ -65,7 +65,7 @@ void	relier(t_val val)
 
 	x = 0;
 	y = 0;
-	while (y < val.nb - 1)
+	while (y < val.nb)
 	{
 		while (val.tab[y][x][3] != -10000)
 		{
@@ -86,7 +86,7 @@ void	ft_point(t_val *val)
 
 	x = 0;
 	y = 0;
-	while (y < val->nb - 1)
+	while (y < val->nb)
 	{
 		while ((int)val->tab[y][x][3] != -10000)
 		{
@@ -101,25 +101,14 @@ void	ft_point(t_val *val)
 	}
 }
 
-int		ft_affich(t_val *val)
+int		ft_draw(t_val *val)
 {
 	int x;
 	int y;
 
 	x = 0;
 	y = 0;
-	while (y <= FENETRE)
-	{
-		while (x <= FENETRE)
-		{
-			val->image[4 * FENETRE * y + 4 * x] = 0;
-			val->image[4 * FENETRE * y + 4 * x + 1] = 0;
-			val->image[4 * FENETRE * y + 4 * x + 2] = 0;
-			x++;
-		}
-		x = 0;
-		y++;
-	}
+	ft_bzero(val->image, FENETRE * FENETRE * 4);
 	if (val->ligne == 1 || val->ligne == 2)
 		relier(*val);
 	else

@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 16:13:59 by apouchet          #+#    #+#             */
-/*   Updated: 2017/01/28 16:14:02 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:46:52 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
-# include "get_next_line.h"
+// # include "get_next_line.h"
 # include "../libft/libft.h"
-# include "mlx.h"
+# include "../mlx/mlx.h"
+# include <stdio.h>
 
-# define FENETRE 1200
+# define FENETRE 1000
 
 typedef struct	s_picture
 {
@@ -81,9 +82,9 @@ void			ft_exit(t_val *val, int mode);
 
 void			ft_trace_ligne(t_val *val);
 
-int				ft_affich(t_val *val);
+int				ft_draw(t_val *val);
 
-void			ft_init(t_val *val);
+void			ft_init_fdf(t_val *val);
 
 int				ft_key_on(int keycode, t_val *val);
 

@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 18:34:17 by apouchet          #+#    #+#             */
-/*   Updated: 2017/03/13 18:34:18 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:13:22 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,10 @@ int		lenligne(char **tab)
 
 void	bas_droite(t_val *val)
 {
-	float	taillex;
-	float	tailley;
 	float	pente;
 	float	incli;
 
-	taillex = val->fx - val->dx;
-	tailley = val->fy - val->dy;
-	pente = fabs(tailley / taillex);
+	pente = fabs((val->fy - val->dy) / (val->fx - val->dx));
 	while (val->dx <= val->fx || val->dy <= val->fy)
 	{
 		incli = fabs((val->fy - val->dy) / (val->fx - val->dx));
@@ -48,14 +44,10 @@ void	bas_droite(t_val *val)
 
 void	bas_gauche(t_val *val)
 {
-	float	taillex;
-	float	tailley;
 	float	pente;
 	float	incli;
 
-	taillex = val->fx - val->dx;
-	tailley = val->fy - val->dy;
-	pente = fabs(tailley / taillex);
+	pente = fabs((val->fy - val->dy) / (val->fx - val->dx));
 	while (val->dx >= val->fx || val->dy <= val->fy)
 	{
 		incli = fabs((val->fy - val->dy) / (val->fx - val->dx));
@@ -72,14 +64,10 @@ void	bas_gauche(t_val *val)
 
 void	haut_droite(t_val *val)
 {
-	float	taillex;
-	float	tailley;
 	float	pente;
 	float	incli;
 
-	taillex = val->fx - val->dx;
-	tailley = val->fy - val->dy;
-	pente = fabs(tailley / taillex);
+	pente = fabs((val->fy - val->dy) / (val->fx - val->dx));
 	while (val->dx <= val->fx || val->dy >= val->fy)
 	{
 		incli = fabs((val->fy - val->dy) / (val->fx - val->dx));
@@ -96,14 +84,10 @@ void	haut_droite(t_val *val)
 
 void	haut_gauche(t_val *val)
 {
-	float	taillex;
-	float	tailley;
 	float	pente;
 	float	incli;
 
-	taillex = val->fx - val->dx;
-	tailley = val->fy - val->dy;
-	pente = fabs(tailley / taillex);
+	pente = fabs((val->fy - val->dy) / (val->fx - val->dx));
 	while (val->dx >= val->fx || val->dy >= val->fy)
 	{
 		incli = fabs((val->fy - val->dy) / (val->fx - val->dx));

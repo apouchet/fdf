@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 17:30:09 by apouchet          #+#    #+#             */
-/*   Updated: 2017/03/02 17:30:13 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/10/24 09:24:53 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	key_vol(t_val *val)
 {
-	if (val->key[69])
+	if (val->key[69] || val->key[44])
 	{
 		if (val->len < 150)
 			if (val->coef < 100)
@@ -26,13 +26,13 @@ void	key_vol(t_val *val)
 			if (val->coef < 20)
 				val->coef++;
 	}
-	if (val->key[78])
+	if (val->key[78] || val->key[47])
 		if (val->coef > 1)
 			val->coef--;
-	if (val->key[88])
+	if (val->key[88] || val->key[41])
 		if (val->vol > 0)
 			val->vol--;
-	if (val->key[92])
+	if (val->key[92] || val->key[39])
 		if (val->vol < 20)
 			val->vol++;
 }
@@ -85,6 +85,6 @@ int		ft_key(t_val *val)
 	key_rot(val);
 	key_fleche(val);
 	ft_rot(val);
-	ft_affich(val);
+	ft_draw(val);
 	return (0);
 }
